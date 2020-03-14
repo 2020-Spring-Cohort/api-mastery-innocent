@@ -1,0 +1,116 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: #E7E1E1
+}
+
+body {
+    background-color: #35336B;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    padding: 1rem;
+    border-bottom: 1px solid #2589BD;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+nav ul li {
+    list-style-type: none;
+    text-align: center;
+    transition: all 500ms ease-in-out;
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 2.5rem;
+}
+
+.logo a {
+    font-size: 3rem;
+}
+
+nav ul li a i {
+    margin-right: 0.6rem;
+}
+
+nav ul li:hover {
+    border: 2px solid #2589BD;
+    background-color: #E7E1E1;
+    color: #35336B;
+}
+
+
+
+nav ul li:hover i {
+    color: #35336B;
+}
+
+.types {
+    height: 9rem;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    place-items: center;
+    padding: 2rem 0rem;
+    grid-gap: 1.2rem;
+
+}
+
+.types .type:nth-child(1) {
+    grid-column: 2/3;
+}
+
+.type {
+    text-align: center;
+    border: 1px solid #2589BD;
+    width: 8rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.animals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0rem 8rem;
+    grid-row-gap: 1rem;
+
+}
+
+.animal {
+    height: 300px;
+    width: 300px;
+    background-image: url(/frontend-spa/src/js/images/lion.jpg);
+    background-color: #35336B;
+    background-size: cover;
+    background-blend-mode: multiply;
+    display: grid;
+    place-items: center;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.animal a {
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+footer {
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+}
+
+.typeDisplay {
+    background-color: #fff;
+}
