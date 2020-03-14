@@ -4,10 +4,11 @@ let isDisplay = false;
 
 animalNav.addEventListener("click", () => {
     if (isDisplay == false) {
-        type.style.display = "grid";
 
+        type.style.transform = "translateY(0px)";
+        type.style.display = "grid";
     } else {
-        type.style.display = "none";
+        type.style.transform = "translateY(-300px)";
 
     }
     isDisplay = !isDisplay;
