@@ -1,0 +1,13 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.animalInfo h2{
+    font-size: 40px;
+}
+
+
+.animalInfo span{
+    font-size: 30px;
+}

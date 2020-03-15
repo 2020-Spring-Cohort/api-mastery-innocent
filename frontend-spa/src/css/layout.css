@@ -1,0 +1,39 @@
+.animaltemplate{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    border: 1px solid red;
+}
+
+
+.lionKing{
+    margin:2rem;
+    display: grid;
+    border: 1px solid black;
+}
+
+.animalInfo{
+    padding-left: 30px;
+    padding-top: 40px;
+    border: 1px solid green;
+    line-height: 3.5rem;
+    
+}
+
+
+.descriptionofLion{
+    padding: 30p;
+    border: 1px solid gold;
+}
+
+.descriptionofLion p{
+    padding: 30px;
+    
+}
+.animalImage{
+    background-image: url(/images/kinglion.jpg);
+height:500px;
+width: 500px;
+border-radius:50%;
+background-size: cover;
+background-position: center;
+}
