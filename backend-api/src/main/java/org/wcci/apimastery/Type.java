@@ -1,5 +1,7 @@
 package org.wcci.apimastery;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,9 @@ import javax.persistence.OneToMany;
 import java.util.Collection;
 import java.util.Objects;
 @Entity
-
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")*/
 public class Type {
     @Id
     @GeneratedValue
@@ -15,6 +19,7 @@ public class Type {
     private String name;
     private String description;
     @OneToMany(mappedBy = "type")
+    @JsonManagedReference
     private Collection<Animal> animals;
 
     public Type(String name, String description) {
