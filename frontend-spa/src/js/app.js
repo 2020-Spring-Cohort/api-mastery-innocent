@@ -13,3 +13,16 @@ animalNav.addEventListener("click", () => {
     }
     isDisplay = !isDisplay;
 });
+
+
+/*********************************************** */
+
+const url = "localhost:8080/types";
+
+fetch(url)
+    .then(response => {
+        response.json
+    })
+    .then(animal => {
+        console.log(animal);
+    });
