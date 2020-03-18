@@ -25,4 +25,12 @@ public class TypeController {
     public Type getSingleType(@PathVariable Long id){
         return typeRepository.findById(id).get();
     }
+    @PostMapping("/types")
+    public Type saveType(@RequestBody Type type){
+        return typeRepository.save(type);
+    }
+    @DeleteMapping("/types/{id}")
+    public void deleteType(@PathVariable Long id){
+        typeRepository.deleteById(id);
+    }
 }
