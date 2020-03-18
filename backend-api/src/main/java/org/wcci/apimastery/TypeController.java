@@ -1,10 +1,11 @@
 package org.wcci.apimastery;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+
+
 @RestController
 public class TypeController {
 
@@ -14,8 +15,14 @@ public class TypeController {
 
         this.typeRepository = typeRepository;
     }
- @RequestMapping("/types")
+
+ @GetMapping("/types")
     public Collection<Type> retrieveTypes() {
         return (Collection<Type>) typeRepository.findAll();
+    }
+
+    @GetMapping("/types/{id}")
+    public Type getSingleType(@PathVariable Long id){
+        return typeRepository.findById(id).get();
     }
 }
