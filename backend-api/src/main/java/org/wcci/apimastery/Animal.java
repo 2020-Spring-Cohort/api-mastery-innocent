@@ -1,9 +1,6 @@
 package org.wcci.apimastery;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -19,7 +16,7 @@ public class Animal {
     private double weight;
     private int age;
     @ManyToOne
-    @JsonBackReference
+    @JsonIgnore
     private Type type;
     private  String description;
     private String diet;

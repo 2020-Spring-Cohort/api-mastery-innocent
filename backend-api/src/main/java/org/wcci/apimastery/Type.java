@@ -19,9 +19,7 @@ public class Type {
     private String name;
     private String description;
     @OneToMany(mappedBy = "type")
-    @JsonManagedReference
     private Collection<Animal> animals;
-
     public Type(String name, String description) {
         this.name = name;
         this.description = description;
