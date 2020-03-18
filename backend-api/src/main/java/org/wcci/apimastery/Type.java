@@ -9,10 +9,10 @@ import javax.persistence.OneToMany;
 import java.util.Collection;
 import java.util.Objects;
 @Entity
-/*@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")*/
+
 public class Type {
+
+
     @Id
     @GeneratedValue
     private Long id;
@@ -26,6 +26,10 @@ public class Type {
     }
 
     public Type() {
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

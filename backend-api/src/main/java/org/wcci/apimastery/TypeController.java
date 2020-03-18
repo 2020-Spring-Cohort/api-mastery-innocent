@@ -33,4 +33,10 @@ public class TypeController {
     public void deleteType(@PathVariable Long id){
         typeRepository.deleteById(id);
     }
+
+    @PutMapping("/types/{id}")
+    public Type updateType(@RequestBody Type type, @PathVariable Long id){
+        type.setId(id);
+        return typeRepository.save(type);
+    }
 }
