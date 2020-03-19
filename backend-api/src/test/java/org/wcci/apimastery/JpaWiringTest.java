@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 public class JpaWiringTest {
@@ -36,24 +37,9 @@ public class JpaWiringTest {
           entityManager.clear();
           Type retrieveType = typeRepository.findById(testType2.getId()).get();
          assertThat(retrieveType.getAnimals()).contains(testAnimal2,testAnimal3);
-
-
-     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         Animal retrievedAnimal = animalRepository.findById(testAnimal3.getId()).get();
+        assertEquals(testType2,retrievedAnimal.getType());
 }
 
-
+}
 

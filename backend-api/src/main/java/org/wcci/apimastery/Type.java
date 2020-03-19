@@ -1,5 +1,7 @@
 package org.wcci.apimastery;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,6 +11,8 @@ import java.util.Objects;
 @Entity
 
 public class Type {
+
+
     @Id
     @GeneratedValue
     private Long id;
@@ -16,13 +20,16 @@ public class Type {
     private String description;
     @OneToMany(mappedBy = "type")
     private Collection<Animal> animals;
-
     public Type(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
     public Type() {
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

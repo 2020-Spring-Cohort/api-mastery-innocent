@@ -1,9 +1,14 @@
 package org.wcci.apimastery;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.util.Objects;
 @Entity
+
 public class Animal {
+
+
     @Id
     @GeneratedValue
     private Long id;
@@ -11,6 +16,7 @@ public class Animal {
     private double weight;
     private int age;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Type type;
     private  String description;
     private String diet;
@@ -28,7 +34,9 @@ public class Animal {
 
     public Animal() {
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }
