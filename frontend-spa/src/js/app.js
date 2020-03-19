@@ -17,12 +17,13 @@ animalNav.addEventListener("click", () => {
 
 /*********************************************** */
 
-const url = "localhost:8080/types";
+const url = "http://localhost:8080/types";
 
 fetch(url)
-    .then(response => {
-        response.json
+    .then((response) => {
+        return response.json();
     })
-    .then(animal => {
-        console.log(animal);
+    .then(res => {
+        console.log(res);
+        console.log(3333333);
     });
