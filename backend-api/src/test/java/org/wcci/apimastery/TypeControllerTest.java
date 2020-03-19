@@ -20,12 +20,13 @@ public class TypeControllerTest {
 
     TypeController underTest;
     TypeRepository typeRepository;
+    AnimalRepository animalRepository;
 
 
     @Test
     public void retrievedTypeShouldReturnAListFromMockRepository() {
         typeRepository = mock(TypeRepository.class);
-        underTest = new TypeController(typeRepository);
+        underTest = new TypeController(typeRepository,animalRepository);
         Type testType = mock(Type.class);
         when(typeRepository.findAll()).thenReturn(Collections.singletonList(testType));
 
@@ -38,7 +39,7 @@ public class TypeControllerTest {
     @Test
     public void retrievedTypeShouldReturnAListContainingMockType() {
         typeRepository = mock(TypeRepository.class);
-        underTest = new TypeController(typeRepository);
+        underTest = new TypeController(typeRepository,animalRepository);
         Type testType = mock(Type.class);
         when(typeRepository.findAll()).thenReturn(Collections.singletonList(testType));
 
@@ -50,7 +51,7 @@ public class TypeControllerTest {
     @Test
     public void underTestWiredHasCorrectAnnotation() throws Exception {
         typeRepository = mock(TypeRepository.class);
-        underTest = new TypeController(typeRepository);
+        underTest = new TypeController(typeRepository,animalRepository);
         Type testType = new Type("testName","testDescription");
         when(typeRepository.findAll()).thenReturn(Collections.singletonList(testType));
 

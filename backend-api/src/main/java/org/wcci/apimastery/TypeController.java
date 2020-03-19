@@ -10,10 +10,11 @@ import java.util.Collection;
 public class TypeController {
 
     private TypeRepository typeRepository;
-
-    public TypeController(TypeRepository typeRepository) {
+    private AnimalRepository animalRepository;
+    public TypeController(TypeRepository typeRepository, AnimalRepository animalRepository) {
 
         this.typeRepository = typeRepository;
+        this.animalRepository =animalRepository;
     }
 
  @GetMapping("/types")
@@ -31,7 +32,11 @@ public class TypeController {
     }
     @DeleteMapping("/types/{id}")
     public void deleteType(@PathVariable Long id){
-        typeRepository.deleteById(id);
+        Type typeToDelete = typeRepository.findById(id).get();
+        for(Animal animal:typeToDelete.getAnimals()){
+            animalRepository.delete(animal);
+        }
+        typeRepository.delete(typeToDelete);
     }
 
     @PutMapping("/types/{id}")
