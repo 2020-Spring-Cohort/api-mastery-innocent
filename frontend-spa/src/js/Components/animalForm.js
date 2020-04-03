@@ -5,6 +5,14 @@ const createAnimalForm = () => {
     const animalFormTitle = document.createElement('h3');
     animalFormTitle.innerText = 'Add Animal';
 
+    const nameLabel = document.createElement('p');
+    nameLabel.innerText = 'Name';
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('type', 'text');
+
+
+
+
 
     const weightLabel = document.createElement('p');
     weightLabel.innerText = 'Weight';
@@ -18,13 +26,13 @@ const createAnimalForm = () => {
 
     const types = [{
         type: 'Mamals',
-        code: 'ma'
+        code: '1'
     }, {
         type: 'Aquatic',
-        code: 'aq'
+        code: '2'
     }, {
         type: 'Bird',
-        code: 'bi'
+        code: '3'
     }];
     const typeLabel = document.createElement('p');
     typeLabel.innerText = 'Type';
@@ -33,18 +41,18 @@ const createAnimalForm = () => {
     for (let i = 0; i < types.length; i++) {
         const optionElement = document.createElement('option');
 
-        optionElement.setAttribute('value', languages[i].code);
-        optionElement.innerText = languages[i].type;
+        optionElement.setAttribute('value', parseInt(types[i].code));
+        optionElement.innerText = types[i].type;
         typeInput.appendChild(optionElement);
     }
 
     const descriptionLabel = document.createElement('p');
-    descriptionLabel.innerText = 'Parent Email';
+    descriptionLabel.innerText = 'Description';
     const descriptionInput = document.createElement('input');
     descriptionInput.setAttribute('type', 'text');
 
     const dietLabel = document.createElement('p');
-    dietLabel.innerText = 'Phone';
+    dietLabel.innerText = 'Diet';
     const dietInput = document.createElement('input');
     dietInput.setAttribute('type', 'text');
 
@@ -52,7 +60,7 @@ const createAnimalForm = () => {
     pictureLabel.innerText = 'Upload Picture';
     const pictureInput = document.createElement('input');
     pictureInput.setAttribute('type', 'file');
-
+    pictureInput.setAttribute('required', true);
 
 
     const submitBtnWrapper = document.createElement('div');
@@ -60,14 +68,19 @@ const createAnimalForm = () => {
     submitBtnWrapper.appendChild(submitBtn);
     submitBtn.innerText = 'Submit';
 
-    submitBtn.addEventListener('click', () => {
-
-        collectAnimalData();
+    submitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        uploadPicture();
+        /*collectAnimalData();*/
 
     });
 
 
     animalFormWrapper.appendChild(animalFormTitle);
+
+    animalFormWrapper.appendChild(nameLabel);
+    animalFormWrapper.appendChild(nameInput);
+
     animalFormWrapper.appendChild(weightLabel);
     animalFormWrapper.appendChild(weightInput);
 
@@ -93,19 +106,17 @@ const createAnimalForm = () => {
         const animal = {
             "name": nameInput.value,
             "weight": weightInput.value,
-
             "age": ageInput.value,
-
-            "type": typeInput.value,
-
+            "type": {
+                "id": typeInput.value
+            },
             "description": descriptionInput.value,
-
             "diet": dietInput.value,
-            "pictureUrl": pictureInput.value
+            "pictureUrl": ''
 
         }
 
-        fetch('http://localhost:8080/students', {
+        fetch('http://localhost:8080/animals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -116,6 +127,35 @@ const createAnimalForm = () => {
             .catch(err => console.error(err));
     }
 
+
+    const uploadPicture = () => {
+        const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/de1yfkbh6/image/upload';
+        const uploadPreset = '350and350';
+        const file = pictureInput.files[0];
+        console.log(file);
+        const formdata = new FormData();
+        formdata.append('fileToUpload', file);
+        formdata.append('upload_preset', uploadPreset);
+
+        fetch(cloudinaryUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formdata
+            })
+            .then(res => {
+                console.log(res);
+
+            })
+
+
+            .catch(err => console.error(err));
+
+
+
+    };
 
 
 

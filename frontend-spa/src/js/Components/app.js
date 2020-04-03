@@ -37,7 +37,7 @@ const renderHomepage = () => {
     const animalListSection = document.querySelector('.alldisplay');
     animalListSection.prepend(renderAnimalList());
     mainSection.appendChild(animalListSection);
-
+    body.appendChild(createAnimalForm());
 
 }
 
