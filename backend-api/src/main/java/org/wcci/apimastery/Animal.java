@@ -18,6 +18,7 @@ public class Animal {
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Type type;
+    @Column(length=900)
     private  String description;
     private String diet;
     private String pictureUrl;
